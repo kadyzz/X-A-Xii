@@ -37,11 +37,13 @@ export function ExcelDropzone (props: ExcelDropzoneProps) {
         {({getRootProps}) => (
           <Box
             { ...getRootProps() }
-            border="2px dashed"
+            border="3px dashed"
             borderColor={ palette.gray['200']}
             minW="20%"
+            padding={10}
+            marginTop={1}
           >
-            <Center height="200">{ label }</Center>
+            <Center height="100">{ label }</Center>
           </Box>
       )}
     </Dropzone>
