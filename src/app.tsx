@@ -13,11 +13,6 @@ import {
 import { ExcelDropzone, ExcelRow } from './excel-dropzone.jsx'
 import { defaultScores, calcScore, UserScores } from './currentHighScore.jsx'
 
-interface ExternalLinkProps {
-  href: string,
-  children: ReactNode
-}
-
 const userScores = defaultScores();
 
 export default function App() {
