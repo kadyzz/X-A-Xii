@@ -33,14 +33,7 @@ export default function App() {
     const name = formData.get('name') as string;
     const score = parseInt(formData.get('score') as string);
 
-    const newEntry = { name, score };
-    const newSheetData = [...sheetData, newEntry];
-
-    //sort again
-    const sortedSheetData = calcScore(newSheetData);
-
-    // Update sheetData 
-    setSheetData(sortedSheetData);
+    handleSheetData([{ name, score }]);
 
     // Reset the form
     event.currentTarget.reset();
