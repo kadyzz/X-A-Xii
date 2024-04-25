@@ -11,21 +11,24 @@ import {
   Capitalized
 } from '@northlight/ui'
 import { ExcelDropzone, ExcelRow } from './excel-dropzone.jsx'
-import { defaultScore, calcScore, UserScores } from './currentHighScore.jsx'
+import { defaultScores, calcScore, UserScores } from './currentHighScore.jsx'
 
 interface ExternalLinkProps {
   href: string,
   children: ReactNode
 }
 
-const userScores = defaultScore();
+const userScores = defaultScores();
 
 export default function App() {
 
   const [sheetData, setSheetData] = useState<UserScores[]>(userScores) //rerender whenever sheetData changes
 
   function handleSheetData(data: ExcelRow[]) {
-    setSheetData(calcScore(data))
+    setSheetData(prevSheetData => {
+      const combinedData = [...prevSheetData, ...data];
+      return calcScore(combinedData);
+    });
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => { //stackoverflow
